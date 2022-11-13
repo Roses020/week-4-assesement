@@ -5,8 +5,10 @@
   </head>
   <body class="container">
     <button id="complimentButton">Get a compliment</button>
-    <button id="fortuneButton">Get a fortune</button>
-    <input id="userInput" type="text"></input><button id="addGoal"> add goal</button>
+    <button id="getGoalButton">Get a goal</button>
+    <label>enter new goal to add or change old goal too: </label><input id="userInput" type="text"> <button id="addGoal">Add Goal</button>
+    <label>enter goal here that you want to update or delete: </label><input id="userInputGoal" type="text"> <button id="updateGoal">Update Goal</button>
+    <button id="deleteGoal" onclick=deleteGoal()>Delete goal</button>
     
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>

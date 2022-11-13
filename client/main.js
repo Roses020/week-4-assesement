@@ -1,5 +1,6 @@
 const complimentBtn = document.getElementById("complimentButton")
 
+
 const getCompliment = () => {
     axios.get("http://localhost:4000/api/compliment/")
         .then(res => {
@@ -10,10 +11,10 @@ const getCompliment = () => {
 
 complimentBtn.addEventListener('click', getCompliment)
 
-const fortuneBtn = document.getElementById("fortuneButton")
+const getGoalBtn = document.getElementById("getGoalButton")
 
-const getFortune = () => {
-   axios.get("http://localhost:4000/api/fortune/")
+const getGoals = () => {
+   axios.get("http://localhost:4000/api/goals/")
         .then(res => {
             const data = res.data;
             alert(data);
@@ -21,8 +22,7 @@ const getFortune = () => {
 
 };
 
-fortuneBtn.addEventListener('click', getFortune)
-
+getGoalBtn.addEventListener('click', getGoals)
 
 const addGoal = () => {
     let body = {
@@ -30,8 +30,6 @@ const addGoal = () => {
     }
     axios.post("http://localhost:4000/api/addGoal/", body)
     .then(res => {
-        //displayGoal(res.data)
-        //const data = res.data;
         alert(res.data);
     });
     
@@ -39,3 +37,27 @@ const addGoal = () => {
 
 const addGoalButton = document.getElementById("addGoal")
 addGoalButton.addEventListener('click', addGoal)
+
+const updateGoal = () => {
+    let body = {
+        newGoal: document.getElementById("userInput").value,
+        oldGoal: document.getElementById("userInputGoal").value
+    }
+    axios.put("http://localhost:4000/api/updateGoal/", body)
+    .then(res => {
+        alert(res.data);
+    });
+    
+};
+
+const updateGoalBtn = document.getElementById("updateGoal")
+updateGoalBtn.addEventListener('click', updateGoal)
+
+
+const deleteGoal = () => {
+    let goal = document.getElementById('userInputGoal').value
+    axios.delete("http://localhost:4000/api/deleteGoal/" + goal)
+    .then(res => {
+        alert(res.data);
+    });
+}
